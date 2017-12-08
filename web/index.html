@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<ul id="ul1">
+
+</ul>
+
+<button type="button" id="btnDel">删除</button>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $.get("user/userJson", function (data) {
+        $.each(data, function (index, user) {
+            $("<li/>").text(user.name).appendTo("#ul1");
+        });
+    });
+
+    $("#btnDel").click(function () {
+        var post_data = {"name": "test001", "pass": "xxxx"};
+        $.ajax({
+            url: "test/18",
+            type: 'delete',
+            contentType: "application/json;charset=utf-8",
+            data: {},
+            success: function (data) {//调用成功
+                alert(data);
+            },
+            error: function (data, textStatus, errorThrown) {//调用失败
+                alert(textStatus);
+            }
+        });
+    });
+</script>
+</body>
+</html>
